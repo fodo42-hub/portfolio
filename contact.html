@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Sunny Jepsen</title>
+  <meta name="description" content="Get in touch with Sunny Jepsen — Creative Lead open to senior creative roles at brand-driven companies." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── CONTACT PAGE SPECIFIC ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* LEFT — Info panel */
+    .contact-info {
+      position: sticky;
+      top: 100px;
+    }
+
+    .contact-intro {
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-intro h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-intro h2 span {
+      color: var(--gold);
+    }
+
+    .contact-intro p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition);
+    }
+
+    .contact-detail-item:hover {
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    .detail-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .detail-value {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .detail-value a {
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+
+    .detail-value a:hover {
+      color: var(--gold);
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px var(--space-md);
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: var(--radius-md);
+      font-size: 0.83rem;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    .availability-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4caf7d;
+      box-shadow: 0 0 6px rgba(76, 175, 125, 0.6);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* RIGHT — Form */
+    .contact-form-wrapper {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+
+    .contact-form-wrapper h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--warm);
+      margin-bottom: var(--space-md);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--navy);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: var(--radius-md);
+      padding: 12px var(--space-sm);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--warm);
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select option {
+      background: var(--navy);
+      color: var(--warm);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background var(--transition);
+      margin-top: var(--space-xs);
+    }
+
+    .btn-submit:hover {
+      background: var(--gold-light);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: var(--space-xs);
+      line-height: 1.6;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .form-success .success-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .form-success h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .form-success p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .contact-info {
+        position: static;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Get in <span>Touch</span></h1>
+      <p>Open to senior creative roles, collaborations, and conversations.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- LEFT: Info -->
+      <div class="contact-info">
+
+        <div class="contact-intro">
+          <h2>Let's build something <span>worth remembering.</span></h2>
+          <p>
+            Whether you're a hiring manager, a creative director, or a brand team looking for someone who can own the work end to end — I'd love to hear from you. I bring 15+ years of brand, packaging, UX, and campaign experience, and I'm ready for the next challenge.
+          </p>
+        </div>
+
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <span class="detail-label">Email</span>
+            <span class="detail-value">
+              <a href="mailto:sunnyjepsen@gmail.com">sunnyjepsen@gmail.com</a>
+            </span>
+          </div>
+          <div class="contact-detail-item">
+            <span class="detail-label">LinkedIn</span>
+            <span class="detail-value">
+              <a href="https://www.linkedin.com/in/sunny-j-a18b991b/" target="_blank">linkedin.com/in/sunny-j-a18b991b</a>
+            </span>
+          </div>
+          <div class="contact-detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Hillsboro, Oregon — open to remote & hybrid</span>
+          </div>
+          <div class="contact-detail-item">
+            <span class="detail-label">Response time</span>
+            <span class="detail-value">Within 24 hours</span>
+          </div>
+        </div>
+
+        <div class="availability-badge">
+          <span class="availability-dot"></span>
+          Available for new opportunities
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="contact-form-wrapper">
+
+        <div id="formContent">
+          <h3>Send me a message</h3>
+
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onsubmit="handleSubmit(event)"
+          >
+            <!-- Netlify hidden fields -->
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="Your company"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="reason">Reason for reaching out</label>
+              <select id="reason" name="reason">
+                <option value="" disabled selected>Select one</option>
+                <option value="job-opportunity">Job opportunity</option>
+                <option value="freelance">Freelance project</option>
+                <option value="collaboration">Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about the role, project, or what's on your mind..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+            <p class="form-note">I'll respond within 24 hours.</p>
+
+          </form>
+        </div>
+
+        <!-- Success state -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✦</div>
+          <h4>Message received.</h4>
+          <p>Thank you for reaching out. I'll be in touch within 24 hours.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(() => {
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      })
+      .catch(() => {
+        alert('Something went wrong. Please email me directly at sunnyjepsen@gmail.com');
+      });
+    }
+  </script>
+
+</body>
+</html>
