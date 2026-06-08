@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Sunny Jepsen</title>
+  <meta name="description" content="About Sunny Jepsen — Creative Lead with 15+ years in brand identity, packaging, UX, and marketing design." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── ABOUT PAGE SPECIFIC ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* LEFT COLUMN */
+    .about-left {
+      position: sticky;
+      top: 100px;
+    }
+
+    .headshot {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      margin-bottom: var(--space-md);
+    }
+
+    .headshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .headshot.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .headshot.placeholder::after {
+      content: "Photo coming soon";
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .meta-value {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* RIGHT COLUMN */
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .about-intro h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+
+    .about-intro h2 span {
+      color: var(--gold);
+    }
+
+    .about-intro p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: var(--space-sm);
+    }
+
+    .about-intro p strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    /* VALUES */
+    .values-section h3 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-md);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .value-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .value-card .v-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 6px;
+    }
+
+    .value-card .v-desc {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* CREDENTIALS */
+    .credentials-section h3 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-md);
+    }
+
+    .credential-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .credential-item {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: flex-start;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+    }
+
+    .credential-year {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gold);
+      min-width: 40px;
+      padding-top: 2px;
+    }
+
+    .credential-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .credential-text strong {
+      color: var(--warm);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: var(--space-lg) var(--space-lg);
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: var(--radius-lg);
+    }
+
+    .cta-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .cta-section p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--warm);
+      border: 1px solid rgba(248, 245, 240, 0.2);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .about-left {
+        position: static;
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: var(--space-md);
+        align-items: start;
+      }
+
+      .headshot {
+        margin-bottom: 0;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .about-left {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>About <span>Me</span></h1>
+      <p>The person behind the work.</p>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- LEFT: Photo + Meta -->
+      <div class="about-left">
+        <div class="headshot placeholder"></div>
+
+        <div class="about-meta">
+          <div class="meta-item">
+            <span class="meta-label">Based in</span>
+            <span class="meta-value">Hillsboro, Oregon</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Originally from</span>
+            <span class="meta-value">South Korea</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Creative Lead</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Experience</span>
+            <span class="meta-value">15+ years</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Disciplines</span>
+            <span class="meta-value">Brand Identity · Packaging · UX · Marketing Design · Brand Campaign</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Story + Values + CTA -->
+      <div class="about-right">
+
+        <!-- INTRO -->
+        <div class="about-intro">
+          <h2>Design is how I <span>bridge worlds.</span></h2>
+
+          <p>
+            I grew up in South Korea with a deep appreciation for craft, precision, and the kind of design that works hard without calling attention to itself. Those values followed me across the Pacific — and they still shape every project I take on.
+          </p>
+
+          <p>
+            My career started at <strong>Leeho</strong>, a stationery manufacturer in Korea, where I learned what it means to design at production scale — rapid product cycles, global trade shows, and the relentless pressure to make every new line better than the last. It was demanding work, and I gave it everything. But after years of late nights and constant output, I made a deliberate choice: I came to the United States to reset, study English, and pursue graduate-level design education on my own terms.
+          </p>
+
+          <p>
+            That decision changed my trajectory completely. What started as a personal reset became a <strong>15-year career building brand systems from the ground up</strong> — most of it at UEi Test Instruments, where I served as the company's creative lead, building the entire brand identity, packaging system, digital presence, brand campaigns, and UX design across a 200+ SKU product line. No team. Full ownership. Every touchpoint.
+          </p>
+
+          <p>
+            Living between two cultures has made me a better designer. I understand how to read a room, adapt communication across contexts, and build trust with people who think differently than I do. <strong>That cross-cultural instinct shows up in my work</strong> — in the way I approach systems thinking, in how I balance visual precision with human warmth, and in the care I bring to every brand decision.
+          </p>
+
+          <p>
+            I believe good design should be <strong>simple and easy to use</strong> — not because it's easy to make, but because the real skill is making something complex feel effortless to the person holding it.
+          </p>
+        </div>
+
+        <!-- VALUES -->
+        <div class="values-section">
+          <h3>What I bring to every project</h3>
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="v-title">Systems thinking</div>
+              <div class="v-desc">I design for scale. Every decision I make is built to work across a full product line, not just a single deliverable.</div>
+            </div>
+            <div class="value-card">
+              <div class="v-title">Cross-cultural fluency</div>
+              <div class="v-desc">Having lived and worked across two continents, I bring a perspective that makes global brands feel locally resonant.</div>
+            </div>
+            <div class="value-card">
+              <div class="v-title">Full ownership</div>
+              <div class="v-desc">I've been the only creative in the room. I know how to lead a brand from strategy to execution without losing momentum.</div>
+            </div>
+            <div class="value-card">
+              <div class="v-title">Human-centered clarity</div>
+              <div class="v-desc">Good design disappears into the experience. I remove friction, not personality — so the user always feels at ease.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CREDENTIALS -->
+        <div class="credentials-section">
+          <h3>Background</h3>
+          <div class="credential-list">
+            <div class="credential-item">
+              <span class="credential-year">Now</span>
+              <div class="credential-text">
+                <strong>Creative Lead — UEi Test Instruments, Oregon</strong>
+                Brand identity, packaging, UX design, digital marketing, and brand campaigns across a 200+ SKU product line.
+              </div>
+            </div>
+            <div class="credential-item">
+              <span class="credential-year">2022</span>
+              <div class="credential-text">
+                <strong>Google UX Design Certificate</strong>
+                User research, wireframing, prototyping, and accessibility-centered design.
+              </div>
+            </div>
+            <div class="credential-item">
+              <span class="credential-year">Early</span>
+              <div class="credential-text">
+                <strong>B.S. Product Design Engineering — Sills University, South Korea</strong>
+                Foundation in engineering principles, industrial design, and product development.
+              </div>
+            </div>
+            <div class="credential-item">
+              <span class="credential-year">Origin</span>
+              <div class="credential-text">
+                <strong>Designer — Leeho, South Korea</strong>
+                Production-scale design for a stationery manufacturer, including global tradeshow campaigns and product line development.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+          <h3>Let's work together.</h3>
+          <p>I'm currently open to senior creative roles at brand-driven companies. If you're building something that needs a designer who can own it end to end — let's talk.</p>
+          <div class="cta-buttons">
+            <a href="index.html" class="btn btn-primary">View my work</a>
+            <a href="/resume.pdf" class="btn btn-secondary" target="_blank">Download résumé</a>
+            <a href="https://linkedin.com/in/sunnyjepsen" class="btn btn-secondary" target="_blank">LinkedIn</a>
+            <a href="contact.html" class="btn btn-secondary">Get in touch</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
