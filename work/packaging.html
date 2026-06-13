@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Packaging System — Sunny Jepsen</title>
+  <meta name="description" content="Packaging redesign that increased shipping efficiency by 75% and unified brand presence across a full product line." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    /* ── CASE STUDY SPECIFIC ── */
+
+    /* Hero */
+    .cs-hero {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .cs-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Layout */
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Sidebar */
+    .cs-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sidebar-block {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .sidebar-block h4 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sidebar-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .sidebar-block ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .stat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px var(--space-sm);
+      background: var(--navy);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Main content */
+    .cs-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .cs-section h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cs-section p strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    /* Image blocks */
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-image-caption {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .cs-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image-grid .cs-image {
+      margin-top: 0;
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--space-md);
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .process-step:last-child {
+      border-bottom: none;
+    }
+
+    .ps-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .ps-content .ps-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 4px;
+    }
+
+    .ps-content .ps-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Result highlights */
+    .result-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .result-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .result-card .r-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-card .r-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Next project nav */
+    .cs-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-lg) 0;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-xl);
+      gap: var(--space-md);
+    }
+
+    .cs-nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: opacity var(--transition);
+    }
+
+    .cs-nav a:hover {
+      opacity: 0.7;
+    }
+
+    .cs-nav .nav-dir {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cs-nav .nav-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--warm);
+    }
+
+    .cs-nav .next {
+      text-align: right;
+    }
+
+    .cs-nav .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(248, 245, 240, 0.15);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      transition: all var(--transition);
+    }
+
+    .cs-nav .back-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cs-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+      }
+
+      .result-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .cs-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-hero {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <h1>Product <span>Packaging System</span></h1>
+      <p>Structural redesign that cut shipping costs and unified brand presence across an entire product line.</p>
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div class="cs-hero">
+      <img src="../images/packaging/before-after.jpg" alt="Before and after packaging comparison — 20 units vs 35 units per carton" />
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="cs-layout">
+
+      <!-- MAIN CONTENT -->
+      <div class="cs-content">
+
+        <!-- THE PROBLEM -->
+        <div class="cs-section">
+          <h2>The Problem</h2>
+          <h3>Three problems. One packaging system to solve them all.</h3>
+          <p>
+            UEi's original packaging was a <strong>blister card format</strong> — a plastic shell heat-sealed to a printed cardboard backing. It was the industry default, and it was holding the brand back in three measurable ways.
+          </p>
+          <p>
+            First, <strong>shipping inefficiency</strong>: the bulky blister format meant only 20 units fit per master carton. That drove up freight costs across every shipment, for every SKU, every order cycle. Second, <strong>weak shelf presence</strong>: blister cards look commodity. On a retail pegboard next to competitors, nothing about the packaging said UEi was a premium, trusted brand. Third, <strong>no brand consistency</strong>: with no unified packaging architecture, each product looked like it came from a different company. There was no visual system — just a collection of individual packages.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/packaging/before.jpg" alt="Original UEi blister pack packaging" />
+          </div>
+          <p class="cs-image-caption">Original blister card format — DL369 Digital Clamp-On Multimeter</p>
+        </div>
+
+        <!-- THE PROCESS -->
+        <div class="cs-section">
+          <h2>The Process</h2>
+          <h3>From dieline to retail shelf — full ownership.</h3>
+          <p>
+            I owned every layer of this project — structural design, dieline creation, and all artwork files. No outside vendors, no structural engineer handoff. That end-to-end ownership meant faster iteration and tighter control over the final result.
+          </p>
+
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="ps-num">1</div>
+              <div class="ps-content">
+                <div class="ps-title">Structural audit</div>
+                <div class="ps-desc">Measured existing product dimensions across the line to determine the optimal new box format — one that would maximize units per carton while maintaining retail hang-tab functionality.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">2</div>
+              <div class="ps-content">
+                <div class="ps-title">Dieline design</div>
+                <div class="ps-desc">Designed the structural dieline from scratch — cut lines, fold lines, bleed zones, and hang-tab slot — built as a reusable template that could scale across the entire product line.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">3</div>
+              <div class="ps-content">
+                <div class="ps-title">Brand system application</div>
+                <div class="ps-desc">Developed a consistent artwork framework — UEi logo placement, color blocking, typography hierarchy, product photography treatment, and feature callout system — designed to work across every SKU regardless of product size or category.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">4</div>
+              <div class="ps-content">
+                <div class="ps-title">Production artwork</div>
+                <div class="ps-desc">Built print-ready files for all faces of the box — front, back, sides, and top — with complete bilingual content (English and Spanish) and all required compliance markings, certifications, and regulatory symbols.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">5</div>
+              <div class="ps-content">
+                <div class="ps-title">Full line rollout</div>
+                <div class="ps-desc">Applied the system across the entire UEi product line — every SKU, every category, every package size — creating a unified brand presence across the complete retail assortment.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-image-grid">
+            <div class="cs-image">
+              <img src="../images/packaging/dieline.jpg" alt="Structural dieline designed for the new box format" />
+            </div>
+            <div class="cs-image">
+              <img src="../images/packaging/artwork-flat.jpg" alt="Flat artwork showing all faces of the new package" />
+            </div>
+          </div>
+          <p class="cs-image-caption">Structural dieline (left) and full flat artwork (right) — both designed and produced in-house</p>
+        </div>
+
+        <!-- THE RESULT -->
+        <div class="cs-section">
+          <h2>The Result</h2>
+          <h3>A 75% shipping efficiency gain — and a brand that finally looked like one.</h3>
+          <p>
+            The new hang-tab box format fit <strong>35 units per master carton</strong>, up from 20 — a 75% increase in units per shipment. That's a direct, recurring cost reduction on every freight order across the full product line.
+          </p>
+          <p>
+            On the retail shelf, the impact was immediate. A consistent brand architecture — unified color blocking, logo treatment, typography, and product photography style — made UEi's full assortment look intentional and premium for the first time. The planogram below shows the system at scale: every product, every category, one cohesive brand.
+          </p>
+
+          <div class="result-highlights">
+            <div class="result-card">
+              <div class="r-number">75%</div>
+              <div class="r-label">Increase in units per master carton</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">20→35</div>
+              <div class="r-label">Units per carton, before and after</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">200+</div>
+              <div class="r-label">SKUs unified under one packaging system</div>
+            </div>
+          </div>
+
+          <div class="cs-image" style="margin-top: var(--space-md);">
+            <img src="../images/packaging/planogram.jpg" alt="Retail planogram showing full UEi product line with unified brand packaging" />
+          </div>
+          <p class="cs-image-caption">Retail planogram — full UEi product line under the new unified packaging system</p>
+
+          <div class="cs-image">
+            <img src="../images/packaging/after-mockup.jpg" alt="New UEi packaging system — DL369 product family" />
+          </div>
+          <p class="cs-image-caption">New hang-tab box format — clean shelf presence, consistent brand architecture</p>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="cs-sidebar">
+
+        <div class="sidebar-block">
+          <h4>Project details</h4>
+          <ul>
+            <li>UEi Test Instruments</li>
+            <li>Hillsboro, Oregon</li>
+            <li>Full product line rollout</li>
+            <li>200+ SKUs</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>My role</h4>
+          <ul>
+            <li>Structural dieline design</li>
+            <li>Packaging artwork</li>
+            <li>Brand system design</li>
+            <li>Production file prep</li>
+            <li>Full line rollout</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Disciplines</h4>
+          <ul>
+            <li>Packaging Design</li>
+            <li>Structural Design</li>
+            <li>Brand Systems</li>
+            <li>Print Production</li>
+            <li>Retail Design</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Tools</h4>
+          <ul>
+            <li>Adobe Illustrator</li>
+            <li>Adobe Photoshop</li>
+            <li>Adobe InDesign</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Key results</h4>
+          <div class="stat-stack">
+            <div class="stat-item">
+              <span class="stat-number">75%</span>
+              <span class="stat-label">Shipping efficiency gain</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">200+</span>
+              <span class="stat-label">SKUs unified</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CASE STUDY NAV -->
+    <div class="cs-nav">
+      <a href="../index.html" class="back-btn">← All work</a>
+      <a href="brand-identity.html" class="next">
+        <span class="nav-dir">Next project →</span>
+        <span class="nav-title">UEi Brand System</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
