@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Design — Sunny Jepsen</title>
+  <meta name="description" content="UX design work spanning a corporate website redesign with measurable results and three end-to-end Google UX certification projects." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    /* ── CASE STUDY SPECIFIC ── */
+    .cs-hero {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .cs-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cs-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sidebar-block {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .sidebar-block h4 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sidebar-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .sidebar-block ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .stat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px var(--space-sm);
+      background: var(--navy);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .cs-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .cs-section h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-section p strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-image-caption {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .cs-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image-grid .cs-image { margin-top: 0; }
+
+    /* Result stats */
+    .result-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .result-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .result-card .r-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-card .r-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Project divider */
+    .project-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0 var(--space-lg);
+    }
+
+    .project-divider::before,
+    .project-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.15);
+    }
+
+    .project-divider span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--space-md);
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .ps-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .ps-content .ps-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 4px;
+    }
+
+    .ps-content .ps-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Project card header */
+    .project-header {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .project-header .ph-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--warm);
+    }
+
+    .project-header .ph-type {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .project-header .ph-badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      color: var(--gold-light);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Nav */
+    .cs-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-lg) 0;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-xl);
+      gap: var(--space-md);
+    }
+
+    .cs-nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: opacity var(--transition);
+    }
+
+    .cs-nav a:hover { opacity: 0.7; }
+
+    .cs-nav .nav-dir {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cs-nav .nav-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--warm);
+    }
+
+    .cs-nav .next { text-align: right; }
+
+    .cs-nav .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(248, 245, 240, 0.15);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      transition: all var(--transition);
+    }
+
+    .cs-nav .back-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cs-layout { grid-template-columns: 1fr; }
+
+      .cs-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+      }
+
+      .result-highlights { grid-template-columns: 1fr; }
+      .cs-image-grid { grid-template-columns: 1fr; }
+
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .cs-sidebar { grid-template-columns: 1fr; }
+      .cs-hero { aspect-ratio: 4 / 3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>UX <span>Design</span></h1>
+      <p>A corporate website redesign with measurable impact and three end-to-end UX projects covering research, wireframing, prototyping, and usability testing.</p>
+    </div>
+
+    <!-- HERO -->
+    <div class="cs-hero">
+      <img src="../images/ux/uei-homepage.png" alt="UEi Test Instruments website redesign" />
+    </div>
+
+    <div class="cs-layout">
+
+      <div class="cs-content">
+
+        <!-- ── PROJECT 1: UEi WEBSITE ── -->
+        <div class="cs-section">
+          <div class="project-header">
+            <div>
+              <div class="ph-title">UEi Test Instruments Website</div>
+              <div class="ph-type">Corporate Website Redesign</div>
+            </div>
+            <span class="ph-badge">Real-world · Measurable results</span>
+          </div>
+
+          <h2>The Problem</h2>
+          <h3>A website that didn't match the brand — or serve the user.</h3>
+          <p>
+            UEi's existing website had grown organically over time without a coherent design system or user experience strategy. Navigation was inconsistent, product discovery was difficult, and the visual language didn't reflect the brand system being built across packaging and marketing materials. <strong>Users were struggling to find products, and the site wasn't converting.</strong>
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/ux/uei-all-pages.jpg" alt="UEi website redesign — full page spread showing homepage, product pages, category navigation, and service pages" />
+          </div>
+          <p class="cs-image-caption">Full website redesign — homepage, product category pages, product detail pages, service pages, and about pages</p>
+        </div>
+
+        <div class="cs-section">
+          <h2>The Process</h2>
+          <h3>Designed every page. Developer handled the code.</h3>
+          <p>
+            I owned the complete design of the redesigned site — information architecture, page layouts, component design, and visual system — working directly with a web developer who handled implementation. Every page was designed to align with the UEi brand system while prioritizing clear product navigation and an intuitive path from category to product detail.
+          </p>
+
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="ps-num">1</div>
+              <div class="ps-content">
+                <div class="ps-title">Information architecture</div>
+                <div class="ps-desc">Reorganized the product taxonomy into a clear category hierarchy — making it easy for HVAC/R technicians and contractors to find the right product by application rather than by product number.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">2</div>
+              <div class="ps-content">
+                <div class="ps-title">Navigation system design</div>
+                <div class="ps-desc">Designed a consistent top navigation with expandable category menus, search, sign-in, and quick-access service links — replacing the previous inconsistent structure with a single unified header across all pages.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">3</div>
+              <div class="ps-content">
+                <div class="ps-title">Page template system</div>
+                <div class="ps-desc">Designed reusable page templates for the homepage, category listing pages, product detail pages, service pages, and the about/contact section — ensuring visual consistency across the entire site.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">4</div>
+              <div class="ps-content">
+                <div class="ps-title">Product detail page design</div>
+                <div class="ps-desc">Designed a structured product detail layout — product photography, part number, description, feature list, downloads (manual, data sheet, line drawing), tab navigation for specs and accessories, and related products — giving users everything they need to make a purchase decision.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">5</div>
+              <div class="ps-content">
+                <div class="ps-title">Brand alignment</div>
+                <div class="ps-desc">Applied the UEi brand system — color, typography, logo placement, and photography style — consistently across every page, creating a site that finally matched the brand being built across packaging and marketing.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <h2>The Result</h2>
+          <h3>Measurable improvement across every key metric.</h3>
+          <p>
+            The redesigned site delivered significant improvement across all three core performance metrics — with users reporting the site was <strong>easy to navigate and intuitive to use</strong>. Internal teams adopted the new structure immediately, and the site became a consistent, on-brand touchpoint for distributors, contractors, and end users.
+          </p>
+
+          <div class="result-highlights">
+            <div class="result-card">
+              <div class="r-number">+150%</div>
+              <div class="r-label">Reduction in bounce rate</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">+130%</div>
+              <div class="r-label">Increase in time on site</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">+175%</div>
+              <div class="r-label">Increase in product page views</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── DIVIDER ── -->
+        <div class="project-divider">
+          <span>Google UX Design Certificate Projects</span>
+        </div>
+
+        <div class="cs-section">
+          <p>
+            The following three projects were completed as part of the <strong>Google UX Design Certificate (2022)</strong>. Each project was executed end-to-end — user research, personas, paper sketches, wireframes, low-fidelity prototypes, usability testing, iteration, and high-fidelity final designs — demonstrating full UX process methodology across different product types and user needs.
+          </p>
+        </div>
+
+        <!-- ── PROJECT 2: GROSHOP ── -->
+        <div class="cs-section">
+          <div class="project-header">
+            <div>
+              <div class="ph-title">GroShop</div>
+              <div class="ph-type">Grocery Ordering Mobile App</div>
+            </div>
+            <span class="ph-badge">Google UX Certificate</span>
+          </div>
+
+          <h2>Overview</h2>
+          <h3>A grocery app designed around real user pain points.</h3>
+          <p>
+            GroShop is a mobile grocery ordering app designed for users who want a fast, easy, and reliable way to order groceries for pickup, delivery, or shipping. The project began with user research that surfaced four core pain points: <strong>navigation clarity, accessibility, information architecture, and payment process for returning users.</strong>
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/ux/groshop-research.jpg" alt="GroShop user research — affinity map, pain points, personas, and paper wireframes" />
+          </div>
+          <p class="cs-image-caption">User research — affinity mapping, pain point analysis, user personas (Reena + Joseph), and paper wireframes</p>
+
+          <div class="process-steps" style="margin-top: var(--space-md);">
+            <div class="process-step">
+              <div class="ps-num">R</div>
+              <div class="ps-content">
+                <div class="ps-title">Research + personas</div>
+                <div class="ps-desc">Conducted user interviews and usability studies. Created two personas — Reena (busy single mom, accessibility needs) and Joseph (college student, first-generation English speaker) — to ground every design decision in real user goals and frustrations.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">W</div>
+              <div class="ps-content">
+                <div class="ps-title">Wireframes + iteration</div>
+                <div class="ps-desc">Created paper sketches and digital wireframes. Two rounds of usability testing surfaced key insights: users wanted better navigation, a reorder feature for returning users, and a faster checkout flow. Each round drove measurable design changes.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">P</div>
+              <div class="ps-content">
+                <div class="ps-title">High-fidelity prototype</div>
+                <div class="ps-desc">Built a complete interactive prototype covering the full user journey — landing, home, shop by category, item detail, pickup/delivery/ship selection, cart, checkout, confirmation, and order tracking. Peer feedback confirmed the app felt easy and enjoyable to use.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-image">
+            <img src="../images/ux/groshop-prototype.jpg" alt="GroShop usability findings, prototype flow, and final UI screens" />
+          </div>
+          <p class="cs-image-caption">Round 1 + 2 usability findings, complete prototype flow, and final UI screens</p>
+
+          <div class="cs-image">
+            <img src="../images/ux/groshop-main.jpg" alt="GroShop final high-fidelity UI — home, shop, pickup, cart, and account screens" />
+          </div>
+          <p class="cs-image-caption">Final high-fidelity UI — home, shop, pickup, cart, and account screens</p>
+        </div>
+
+        <!-- ── PROJECT 3: SWEETRENT ── -->
+        <div class="cs-section">
+          <div class="project-header">
+            <div>
+              <div class="ph-title">SweetRent</div>
+              <div class="ph-type">Rental Property Platform — Web + Mobile</div>
+            </div>
+            <span class="ph-badge">Google UX Certificate</span>
+          </div>
+
+          <h2>Overview</h2>
+          <h3>A rental search platform designed for short and long-term renters.</h3>
+          <p>
+            SweetRent is a responsive web and mobile rental platform that helps users find short-term and long-term rental properties. The design process started with paper sketches exploring five different layout options — then moved through digital wireframes, low-fidelity prototypes, usability testing, and a complete high-fidelity design for both desktop and mobile.
+          </p>
+
+          <div class="cs-image-grid">
+            <div class="cs-image">
+              <img src="../images/ux/sweetrent-wireframes.jpg" alt="SweetRent paper sketches and digital wireframes" />
+            </div>
+            <div class="cs-image">
+              <img src="../images/ux/sweetrent-prototype.jpg" alt="SweetRent high-fidelity prototype flows — mobile and desktop" />
+            </div>
+          </div>
+          <p class="cs-image-caption">Left: Paper sketches (5 layout options) + digital wireframes for desktop and mobile. Right: Complete hi-fi prototype flows.</p>
+
+          <div class="cs-image">
+            <img src="../images/ux/sweetrent-hifi.jpg" alt="SweetRent final high-fidelity UI — desktop and mobile" />
+          </div>
+          <p class="cs-image-caption">Final high-fidelity UI — full desktop layout and mobile responsive version</p>
+
+          <div class="cs-image">
+            <img src="../images/ux/sweetrent-main.png" alt="SweetRent responsive design — desktop, tablet, and mobile" />
+          </div>
+          <p class="cs-image-caption">Responsive design across desktop, tablet, and mobile</p>
+        </div>
+
+        <!-- ── PROJECT 4: HAPPYTEENS ── -->
+        <div class="cs-section">
+          <div class="project-header">
+            <div>
+              <div class="ph-title">HappyTeens</div>
+              <div class="ph-type">Teen Lifestyle Platform — Web + Mobile</div>
+            </div>
+            <span class="ph-badge">Google UX Certificate</span>
+          </div>
+
+          <h2>Overview</h2>
+          <h3>A content platform built for teens — recipes, finance, and business.</h3>
+          <p>
+            HappyTeens is a responsive web and mobile platform designed to help teenagers aged 13–18 explore recipes, personal finance, and business ideas in an approachable, visually engaging format. The project required designing for a younger audience with specific accessibility and engagement needs — resulting in a bold yellow and white visual system with clear navigation and image-forward content layouts.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/ux/happyteens-sketch.jpg" alt="HappyTeens paper sketches, wireframes, and usability study before/after comparisons" />
+          </div>
+          <p class="cs-image-caption">Paper sketches, early wireframes, and usability study before/after — recipe list and recipe detail pages</p>
+
+          <div class="cs-image-grid">
+            <div class="cs-image">
+              <img src="../images/ux/happyteens-prototype.jpg" alt="HappyTeens mobile hi-fi prototype flow and website hi-fi screens" />
+            </div>
+            <div class="cs-image">
+              <img src="../images/ux/happyteens-app.jpg" alt="HappyTeens final mobile UI screens" />
+            </div>
+          </div>
+          <p class="cs-image-caption">Left: Complete prototype flows (mobile + web). Right: Final mobile UI — home, recipe list, recipe detail, and contact.</p>
+
+          <div class="cs-image">
+            <img src="../images/ux/happyteens-main.jpg" alt="HappyTeens responsive design — desktop, tablet, and mobile" />
+          </div>
+          <p class="cs-image-caption">Responsive design across desktop, tablet, and mobile</p>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="cs-sidebar">
+
+        <div class="sidebar-block">
+          <h4>UEi Website</h4>
+          <ul>
+            <li>Corporate redesign</li>
+            <li>UEi Test Instruments</li>
+            <li>Full site — all pages</li>
+            <li>Designer + art director</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Certificate projects</h4>
+          <ul>
+            <li>GroShop — grocery app</li>
+            <li>SweetRent — rental platform</li>
+            <li>HappyTeens — teen content</li>
+            <li>Google UX Design Cert. 2022</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>My process</h4>
+          <ul>
+            <li>User research</li>
+            <li>Personas</li>
+            <li>Paper sketches</li>
+            <li>Wireframes</li>
+            <li>Lo-fi prototypes</li>
+            <li>Usability testing</li>
+            <li>Hi-fi prototypes</li>
+            <li>Final UI design</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Disciplines</h4>
+          <ul>
+            <li>UX Design</li>
+            <li>UI Design</li>
+            <li>User Research</li>
+            <li>Prototyping</li>
+            <li>Usability Testing</li>
+            <li>Responsive Design</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Tools</h4>
+          <ul>
+            <li>Figma</li>
+            <li>Adobe XD</li>
+            <li>Adobe Illustrator</li>
+            <li>Adobe Photoshop</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>UEi site results</h4>
+          <div class="stat-stack">
+            <div class="stat-item">
+              <span class="stat-number">+150%</span>
+              <span class="stat-label">Bounce rate reduction</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">+130%</span>
+              <span class="stat-label">Time on site</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">+175%</span>
+              <span class="stat-label">Product page views</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CASE STUDY NAV -->
+    <div class="cs-nav">
+      <a href="brand-identity.html">
+        <span class="nav-dir">← Previous project</span>
+        <span class="nav-title">UEi Brand System</span>
+      </a>
+      <a href="../index.html" class="back-btn">All work</a>
+      <a href="digital-marketing.html" class="next">
+        <span class="nav-dir">Next project →</span>
+        <span class="nav-title">Digital Marketing</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
