@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Marketing — Sunny Jepsen</title>
+  <meta name="description" content="End-to-end digital marketing across social media, email, print, tradeshow, and brand campaigns — growing Instagram 300% and sustaining a 400-edition weekly newsletter." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .cs-hero {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .cs-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cs-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sidebar-block {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .sidebar-block h4 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sidebar-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .sidebar-block ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .stat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px var(--space-sm);
+      background: var(--navy);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .cs-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .cs-section h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-section p strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-image-caption {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .cs-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image-grid .cs-image { margin-top: 0; }
+
+    .result-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .result-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .result-card .r-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-card .r-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .channel-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin: var(--space-lg) 0 var(--space-md);
+    }
+
+    .channel-divider::before,
+    .channel-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.15);
+    }
+
+    .channel-divider span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .channel-header {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .channel-header .ch-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--warm);
+    }
+
+    .channel-header .ch-sub {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .channel-header .ch-badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      color: var(--gold-light);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .cs-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-lg) 0;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-xl);
+      gap: var(--space-md);
+    }
+
+    .cs-nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: opacity var(--transition);
+    }
+
+    .cs-nav a:hover { opacity: 0.7; }
+
+    .cs-nav .nav-dir {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cs-nav .nav-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--warm);
+    }
+
+    .cs-nav .next { text-align: right; }
+
+    .cs-nav .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(248, 245, 240, 0.15);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      transition: all var(--transition);
+    }
+
+    .cs-nav .back-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .cs-layout { grid-template-columns: 1fr; }
+
+      .cs-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+      }
+
+      .result-highlights { grid-template-columns: 1fr; }
+      .cs-image-grid { grid-template-columns: 1fr; }
+
+      .channel-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .cs-sidebar { grid-template-columns: 1fr; }
+      .cs-hero { aspect-ratio: 4 / 3; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Digital <span>Marketing</span></h1>
+      <p>Multi-channel marketing across social media, email, print, tradeshow, and brand campaigns — built and managed as the sole creative resource.</p>
+    </div>
+
+    <div class="cs-hero">
+      <img src="../images/marketing/social-media.jpg" alt="UEi social media content — Instagram, Facebook, LinkedIn, and X" />
+    </div>
+
+    <div class="cs-layout">
+
+      <div class="cs-content">
+
+        <!-- OVERVIEW -->
+        <div class="cs-section">
+          <h2>Overview</h2>
+          <h3>One person. Every channel. Every campaign.</h3>
+          <p>
+            As UEi's sole creative lead, I owned the design and production of every digital and print marketing asset the company produced — from weekly email newsletters to tradeshow banners to social media content across four platforms. There was no marketing team. <strong>Every campaign, every post, every banner, every ad was conceived, designed, and delivered by me.</strong>
+          </p>
+          <p>
+            The scope covered organic social media management, a weekly distributor newsletter running for 7+ years, tradeshow and print collateral, catalog and publication ads, web banners, Amazon product content, and a branded environmental installation — all maintained in parallel while supporting a 200+ SKU product line.
+          </p>
+
+          <div class="result-highlights">
+            <div class="result-card">
+              <div class="r-number">300%</div>
+              <div class="r-label">Instagram follower growth — 1,500 to 6,200</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">400+</div>
+              <div class="r-label">Weekly newsletter editions — 7+ years running</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">4</div>
+              <div class="r-label">Active platforms — Instagram, Facebook, LinkedIn, X</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHANNEL 1: SOCIAL MEDIA -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Channel 01</span></div>
+          <div class="channel-header">
+            <div>
+              <div class="ch-title">Social Media</div>
+              <div class="ch-sub">Instagram · Facebook · LinkedIn · X</div>
+            </div>
+            <span class="ch-badge">300% follower growth</span>
+          </div>
+
+          <p>
+            I managed UEi's organic social media presence across four platforms — creating all content in-house without an agency or paid advertising budget. Content spanned product launches, seasonal campaigns, giveaways, tradeshow coverage, customer spotlights, and brand awareness posts, all designed to stay consistent with the UEi brand system while adapting tone and format for each platform's audience.
+          </p>
+          <p>
+            Instagram grew from <strong>1,500 followers when I started to 6,200</strong> — a 300% increase driven entirely by organic content. Each post was designed to be visually on-brand, immediately recognizable as UEi, and relevant to the HVAC/R and electrical contractor audience we were reaching.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/marketing/social-media.jpg" alt="UEi social media content grid — product launches, giveaways, seasonal campaigns, and brand posts" />
+          </div>
+          <p class="cs-image-caption">Social media content grid — product launches, Halloween campaign, giveaway, USA 250th commemorative edition, and new product reveals</p>
+        </div>
+
+        <!-- CHANNEL 2: TRADESHOW + PRINT BANNERS -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Channel 02</span></div>
+          <div class="channel-header">
+            <div>
+              <div class="ch-title">Tradeshow + Print Banners</div>
+              <div class="ch-sub">Standing banners · Distributor events · Tradeshow displays</div>
+            </div>
+            <span class="ch-badge">Physical brand presence</span>
+          </div>
+
+          <p>
+            Tradeshow and distributor event materials required designs that worked at large format — bold enough to read across a crowded floor, on-brand enough to be immediately recognizable as UEi. I designed standing banners, display graphics, and event collateral for use at trade events and distributor sales meetings across the US.
+          </p>
+          <p>
+            Each piece was designed to reinforce the brand campaign message while highlighting the specific product or promotion relevant to that event — from the <strong>CO Awareness Month campaign</strong> to the <strong>USA 250th Commemorative Edition</strong> clamp meter launch.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/marketing/standing-banners.jpg" alt="UEi standing banners — Carbon Monoxide Protection and USA 250th Commemorative Edition" />
+          </div>
+          <p class="cs-image-caption">Standing banners — CO Protection "Always On" campaign (left) and USA 250th Commemorative Edition clamp meter launch (right)</p>
+        </div>
+
+        <!-- CHANNEL 3: CATALOG + PUBLICATION ADS -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Channel 03</span></div>
+          <div class="channel-header">
+            <div>
+              <div class="ch-title">Catalog + Publication Ads</div>
+              <div class="ch-sub">Trade publication ads · Distributor catalogs · Product launch spreads</div>
+            </div>
+            <span class="ch-badge">Print + digital</span>
+          </div>
+
+          <p>
+            Publication and catalog ads required a different level of polish — these placements ran in trade publications read by HVAC/R professionals, contractors, and distributor sales reps. Every ad had to communicate product value quickly, look premium on the page, and be print-ready at exact publication specs.
+          </p>
+          <p>
+            The Scales catalog ad shown below — "The Rumors Are True" — is a full-page product launch spread for UEi's wireless refrigerant scale line, combining <strong>dramatic product photography, bold headline writing, and a complete product comparison</strong> across three SKUs with QR-linked video content.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/marketing/catalog-ad.jpg" alt="UEi Wireless Refrigerant Scales full-page catalog ad — The Rumors Are True" />
+          </div>
+          <p class="cs-image-caption">Full-page catalog ad — UEi Wireless Refrigerant Scales product launch. "The Rumors Are True." Trade publication and distributor catalog placement.</p>
+        </div>
+
+        <!-- CHANNEL 4: BRAND CAMPAIGN -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Channel 04</span></div>
+          <div class="channel-header">
+            <div>
+              <div class="ch-title">Brand Campaign — Environmental Design</div>
+              <div class="ch-sub">Test · Measure · Analyze · Conference room installation</div>
+            </div>
+            <span class="ch-badge">Brand campaign</span>
+          </div>
+
+          <p>
+            The UEi brand campaign extended beyond digital and print into the physical environment. I designed a modular wall installation for UEi's conference room — a grid of 12"×12" and 25"×25" printed panels spanning floor to ceiling (8'6") that brought the company's core brand message, <strong>Test · Measure · Analyze</strong>, to life as an immersive visual experience.
+          </p>
+          <p>
+            The installation combined product photography, in-use action shots, brand typography, and milestone moments — including the 50th Anniversary mark — into a cohesive environmental design that reinforced the brand for every visitor, partner, and employee who walked into that room.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/marketing/brand-campaign.jpg" alt="UEi Test · Measure · Analyze brand campaign — conference room wall installation with layout spec" />
+          </div>
+          <p class="cs-image-caption">Brand campaign wall installation — Test · Measure · Analyze. Conference Room #2. 8'6" floor to ceiling. Modular panel grid with layout specification.</p>
+        </div>
+
+        <!-- CHANNEL 5: EMAIL NEWSLETTER -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Channel 05</span></div>
+          <div class="channel-header">
+            <div>
+              <div class="ch-title">Email Newsletter</div>
+              <div class="ch-sub">Weekly distributor newsletter · Constant Contact · 400+ editions</div>
+            </div>
+            <span class="ch-badge">7+ years · Steady growth</span>
+          </div>
+
+          <p>
+            UEi's weekly distributor newsletter has been running for over 7 years — and reached its <strong>400th edition in November 2024</strong>. I designed the newsletter template that has carried the publication through hundreds of editions, keeping it visually consistent with the UEi brand system while accommodating a wide range of weekly content: product announcements, podcast links, new product previews, distributor spotlights, industry awareness campaigns, and field updates from the UEi sales team.
+          </p>
+          <p>
+            The newsletter goes out every Friday morning to UEi's distributor network — the frontline reps and sales teams who represent UEi products to contractors and end users across the US and Canada. <strong>Consistent design, reliable delivery, and steady open rate growth</strong> over 7+ years reflects the trust the distributor network has placed in this weekly touchpoint.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/marketing/email-newsletter.jpg" alt="UEi weekly distributor newsletter — 400th edition, November 2024" />
+          </div>
+          <p class="cs-image-caption">400th edition — UEi weekly distributor newsletter, November 22, 2024. Template designed and maintained across 7+ years of weekly publication.</p>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="cs-sidebar">
+
+        <div class="sidebar-block">
+          <h4>Project details</h4>
+          <ul>
+            <li>UEi Test Instruments</li>
+            <li>Hillsboro, Oregon</li>
+            <li>Sole creative resource</li>
+            <li>7+ years ongoing</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Channels</h4>
+          <ul>
+            <li>Instagram · Facebook</li>
+            <li>LinkedIn · X</li>
+            <li>Email — Constant Contact</li>
+            <li>Tradeshow banners</li>
+            <li>Catalog + publication ads</li>
+            <li>Amazon content</li>
+            <li>Web banners</li>
+            <li>Environmental design</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Disciplines</h4>
+          <ul>
+            <li>Social Media Design</li>
+            <li>Email Marketing</li>
+            <li>Print Design</li>
+            <li>Campaign Design</li>
+            <li>Environmental Design</li>
+            <li>Art Direction</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Tools</h4>
+          <ul>
+            <li>Adobe Illustrator</li>
+            <li>Adobe Photoshop</li>
+            <li>Adobe InDesign</li>
+            <li>Constant Contact</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Key results</h4>
+          <div class="stat-stack">
+            <div class="stat-item">
+              <span class="stat-number">300%</span>
+              <span class="stat-label">Instagram growth</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">400+</span>
+              <span class="stat-label">Newsletter editions</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Active social platforms</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CASE STUDY NAV -->
+    <div class="cs-nav">
+      <a href="ux-design.html">
+        <span class="nav-dir">← Previous project</span>
+        <span class="nav-title">UX Design</span>
+      </a>
+      <a href="../index.html" class="back-btn">All work</a>
+      <a href="presentations.html" class="next">
+        <span class="nav-dir">Next project →</span>
+        <span class="nav-title">Executive Presentations</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
