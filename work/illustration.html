@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Illustration — Sunny Jepsen</title>
+  <meta name="description" content="3,000+ technical illustrations produced in Adobe Illustrator across 100+ products and 130+ accessories — manuals, diagrams, and product documentation." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .cs-hero {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .cs-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cs-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sidebar-block {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .sidebar-block h4 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sidebar-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .sidebar-block ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .stat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px var(--space-sm);
+      background: var(--navy);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .cs-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .cs-section h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-section p strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-image-caption {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .cs-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image-grid .cs-image { margin-top: 0; }
+
+    /* Scale stats */
+    .result-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .result-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .result-card .r-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-card .r-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--space-md);
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .process-step:last-child { border-bottom: none; }
+
+    .ps-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .ps-content .ps-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 4px;
+    }
+
+    .ps-content .ps-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* illustration type cards */
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .type-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .type-card .t-icon {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .type-card .t-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 4px;
+    }
+
+    .type-card .t-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Nav */
+    .cs-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-lg) 0;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-xl);
+      gap: var(--space-md);
+    }
+
+    .cs-nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: opacity var(--transition);
+    }
+
+    .cs-nav a:hover { opacity: 0.7; }
+
+    .cs-nav .nav-dir {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cs-nav .nav-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--warm);
+    }
+
+    .cs-nav .next { text-align: right; }
+
+    .cs-nav .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(248, 245, 240, 0.15);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      transition: all var(--transition);
+    }
+
+    .cs-nav .back-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cs-layout { grid-template-columns: 1fr; }
+
+      .cs-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+      }
+
+      .result-highlights { grid-template-columns: 1fr; }
+      .type-grid { grid-template-columns: 1fr 1fr; }
+      .cs-image-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .cs-sidebar { grid-template-columns: 1fr; }
+      .cs-hero { aspect-ratio: 4 / 3; }
+      .type-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Technical <span>Illustration</span></h1>
+      <p>3,000+ precision vector illustrations produced across 100+ products and 130+ accessories — manuals, diagrams, and product documentation.</p>
+    </div>
+
+    <!-- HERO -->
+    <div class="cs-hero">
+      <img src="../images/illustration/before-after.jpg" alt="Technical illustration — photo reference vs finished vector illustration of UEi DL599 clamp meter" />
+    </div>
+
+    <div class="cs-layout">
+
+      <div class="cs-content">
+
+        <!-- OVERVIEW -->
+        <div class="cs-section">
+          <h2>Overview</h2>
+          <h3>Precision at scale — 3,000+ illustrations. Every product. Every manual.</h3>
+          <p>
+            Every UEi product ships with an instruction manual. Every manual contains detailed technical illustrations — product views, parts callouts, measurement diagrams, connection schematics, and application diagrams. With <strong>100+ products and 130+ accessories in the line</strong>, and an average of 15–25 illustrations per manual, the total illustration output across my tenure represents over 3,000 individual vector illustrations produced entirely in Adobe Illustrator.
+          </p>
+          <p>
+            These aren't decorative graphics. Technical illustrations for test instruments have to be <strong>dimensionally accurate, clearly labeled, and precise enough for a technician to follow in the field</strong> — often under pressure, in tight spaces, with safety implications. Every line, every callout letter, every connector symbol had to be correct.
+          </p>
+
+          <div class="result-highlights">
+            <div class="result-card">
+              <div class="r-number">3,000+</div>
+              <div class="r-label">Vector illustrations produced</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">100+</div>
+              <div class="r-label">Products with full illustration sets</div>
+            </div>
+            <div class="result-card">
+              <div class="r-number">130+</div>
+              <div class="r-label">Accessories documented</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WHAT I ILLUSTRATED -->
+        <div class="cs-section">
+          <h2>Illustration Types</h2>
+          <h3>Three categories. One consistent standard.</h3>
+          <p>
+            The illustration work fell into three primary categories — each with its own technical requirements, level of detail, and end-use context. All were produced as scalable vector files in Adobe Illustrator, built to spec for both print (manuals, packaging inserts) and digital (website, PDF downloads).
+          </p>
+
+          <div class="type-grid">
+            <div class="type-card">
+              <div class="t-icon">◎</div>
+              <div class="t-title">Product view illustrations</div>
+              <div class="t-desc">Multi-view vector renderings of each product — front, back, side, and bottom — with accurate proportions, surface detail, button labels, port locations, and display readouts. Used in manuals and on the website.</div>
+            </div>
+            <div class="type-card">
+              <div class="t-icon">⌁</div>
+              <div class="t-title">Parts callout diagrams</div>
+              <div class="t-desc">Labeled illustrations identifying every component of a product — each part lettered and cross-referenced to a written description. Required precise placement of leader lines and callout letters without obscuring product detail.</div>
+            </div>
+            <div class="type-card">
+              <div class="t-icon">⊞</div>
+              <div class="t-title">Application + system diagrams</div>
+              <div class="t-desc">Isometric illustrations showing how UEi products are used in real-world HVAC/R environments — product placement within ductwork, refrigerant lines, electrical systems, and building cross-sections.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BEFORE / AFTER -->
+        <div class="cs-section">
+          <h2>The Process</h2>
+          <h3>From photo reference to production-ready vector.</h3>
+          <p>
+            Every product illustration started from photo reference — engineering samples, product photography, or actual units on my desk. Working in Adobe Illustrator, I built each view from scratch using precise anchor points, consistent stroke weights, and accurate label reproduction. No auto-trace shortcuts. Every path was drawn manually to ensure clean, scalable output.
+          </p>
+          <p>
+            The before/after below shows the DL599 Wireless TRMS Power Clamp Meter — <strong>photo reference on the left, finished vector illustration on the right</strong> — across front, back, and bottom views. The vector versions are the ones that appear in the product manual, on the website product page, and in any marketing material that references product anatomy.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/illustration/before-after.jpg" alt="DL599 clamp meter — photo reference vs finished vector illustration, front back and bottom views" />
+          </div>
+          <p class="cs-image-caption">DL599 Wireless TRMS Power Clamp Meter — photo reference (left columns) vs. finished vector illustration (right columns). Front, back, and bottom views.</p>
+
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="ps-num">1</div>
+              <div class="ps-content">
+                <div class="ps-title">Photo reference collection</div>
+                <div class="ps-desc">Photographed or sourced engineering samples of each product from multiple angles — front, back, sides, top, and bottom — ensuring enough reference to capture every surface detail, button, port, and label.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">2</div>
+              <div class="ps-content">
+                <div class="ps-title">Vector construction in Illustrator</div>
+                <div class="ps-desc">Built each illustration using manual path drawing — no auto-trace. Established consistent stroke weights for primary outlines, secondary details, and fine internal lines. Applied fills only where needed to distinguish surfaces without adding visual noise.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">3</div>
+              <div class="ps-content">
+                <div class="ps-title">Label and callout system</div>
+                <div class="ps-desc">Applied a consistent lettering system (A through Z, continuing with AA, BB as needed) for parts callouts — each letter positioned with a leader line, sized for legibility at both print and screen resolution, cross-referenced to the written parts list.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">4</div>
+              <div class="ps-content">
+                <div class="ps-title">Engineering review + accuracy check</div>
+                <div class="ps-desc">Every finished illustration was reviewed against the physical product and engineering documentation to verify that port locations, button labels, safety markings, and compliance symbols were accurate before being placed in the manual.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-num">5</div>
+              <div class="ps-content">
+                <div class="ps-title">Production file prep</div>
+                <div class="ps-desc">Exported print-ready files for manual placement (InDesign) and web-optimized versions for the product page. Built as scalable vectors so the same illustration works at any size — from a small manual diagram to a large tradeshow graphic.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SYSTEM DIAGRAM -->
+        <div class="cs-section">
+          <h2>Application Diagrams</h2>
+          <h3>Showing the product in context — not just on a white background.</h3>
+          <p>
+            Beyond product views and parts callouts, I produced application diagrams that showed UEi instruments being used in real HVAC/R environments. These isometric illustrations gave technicians and contractors a clear visual reference for <strong>where and how to use each instrument within a complete system</strong> — air handlers, ductwork, refrigerant lines, outdoor condenser units, and electrical connections all illustrated in a single scene.
+          </p>
+          <p>
+            These diagrams appeared on the website, in product literature, and in training materials — helping distributors and end users understand product application without requiring written explanation for every use case.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/illustration/diagram.jpg" alt="UEi HVAC/R system application diagram — isometric illustration showing product placement across a complete system" />
+          </div>
+          <p class="cs-image-caption">HVAC/R system application diagram — isometric vector illustration showing UEi instruments placed throughout a complete residential system. Adobe Illustrator.</p>
+        </div>
+
+        <!-- MANUAL -->
+        <div class="cs-section">
+          <h2>In Use — Product Manuals</h2>
+          <h3>Every illustration in context — the finished manual.</h3>
+          <p>
+            The DL599 instruction manual below shows the complete illustration system at work — cover illustration, parts overview with lettered callouts, measurement mode diagrams, spec tables, and app overview screens, all produced and placed into a single cohesive document. <strong>Every illustration you see in this manual was created by me.</strong>
+          </p>
+          <p>
+            This is one manual for one product. Multiply that across 100+ products and 130+ accessories — each with its own unique form factor, feature set, and application context — and the cumulative scope of this work becomes clear. Every UEi product in the field today ships with a manual illustrated to this standard.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/illustration/manual.jpg" alt="UEi DL599 instruction manual spread — cover, parts diagram, measurement diagrams, spec tables, and app overview" />
+          </div>
+          <p class="cs-image-caption">DL599 Wireless TRMS Power Clamp Meter instruction manual — cover, parts overview, voltage diagrams, DC microamps, watt measurement, and app overview. All illustrations produced in Adobe Illustrator.</p>
+        </div>
+
+        <!-- THE RESULT -->
+        <div class="cs-section">
+          <h2>The Result</h2>
+          <h3>A documentation standard that scales across an entire product line.</h3>
+          <p>
+            The illustration system I built and maintained gave UEi a consistent, professional documentation standard across every product — ensuring that every technician who opens a UEi manual sees clear, accurate, well-organized visual guidance from the first page to the last.
+          </p>
+          <p>
+            Beyond accuracy, the consistency matters. <strong>When every manual looks like it came from the same hand, the brand feels more trustworthy.</strong> Distributors notice. Contractors notice. And when a technician can find what they need in a manual quickly — because the illustration is clear and the callout system is logical — that's good UX applied to technical documentation.
+          </p>
+          <p>
+            This work also directly supported the packaging, website, and marketing systems — the same vector illustrations produced for manuals were reused across product pages, data sheets, catalog ads, and tradeshow materials, creating a unified visual language across every customer touchpoint.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="cs-sidebar">
+
+        <div class="sidebar-block">
+          <h4>Project details</h4>
+          <ul>
+            <li>UEi Test Instruments</li>
+            <li>Hillsboro, Oregon</li>
+            <li>Ongoing — full product line</li>
+            <li>15+ years of output</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Illustration types</h4>
+          <ul>
+            <li>Product view illustrations</li>
+            <li>Parts callout diagrams</li>
+            <li>Measurement diagrams</li>
+            <li>Application diagrams</li>
+            <li>Isometric system diagrams</li>
+            <li>Connection schematics</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Used in</h4>
+          <ul>
+            <li>Product manuals</li>
+            <li>Website product pages</li>
+            <li>Data sheets</li>
+            <li>Catalog ads</li>
+            <li>Packaging</li>
+            <li>Training materials</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Tools</h4>
+          <ul>
+            <li>Adobe Illustrator</li>
+            <li>Adobe InDesign</li>
+            <li>Adobe Photoshop</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Scale</h4>
+          <div class="stat-stack">
+            <div class="stat-item">
+              <span class="stat-number">3,000+</span>
+              <span class="stat-label">Illustrations produced</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Products documented</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">130+</span>
+              <span class="stat-label">Accessories documented</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15–25</span>
+              <span class="stat-label">Illustrations per manual</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CASE STUDY NAV -->
+    <div class="cs-nav">
+      <a href="presentations.html">
+        <span class="nav-dir">← Previous project</span>
+        <span class="nav-title">Executive Presentations</span>
+      </a>
+      <a href="../index.html" class="back-btn">All work</a>
+      <a href="../contact.html" class="next">
+        <span class="nav-dir">Get in touch →</span>
+        <span class="nav-title">Contact me</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
