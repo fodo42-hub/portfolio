@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Presentations — Sunny Jepsen</title>
+  <meta name="description" content="Presentation design spanning executive business reviews, product launch decks, process infographics, and reusable template systems — built for high-stakes audiences." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .cs-hero {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-xl);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .cs-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .cs-sidebar {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sidebar-block {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .sidebar-block h4 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sidebar-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .sidebar-block ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .stat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px var(--space-sm);
+      background: var(--navy);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .cs-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .cs-section h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-section p strong {
+      color: var(--warm);
+      font-weight: 500;
+    }
+
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-image-caption {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .cs-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .cs-image-grid .cs-image { margin-top: 0; }
+
+    .result-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .result-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .result-card .r-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-card .r-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .type-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .type-card .t-icon {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .type-card .t-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 4px;
+    }
+
+    .type-card .t-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .channel-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin: var(--space-lg) 0 var(--space-md);
+    }
+
+    .channel-divider::before,
+    .channel-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.15);
+    }
+
+    .channel-divider span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .deck-header {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .deck-header .dh-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--warm);
+    }
+
+    .deck-header .dh-sub {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .deck-header .dh-badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      color: var(--gold-light);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .cs-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-lg) 0;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: var(--space-xl);
+      gap: var(--space-md);
+    }
+
+    .cs-nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: opacity var(--transition);
+    }
+
+    .cs-nav a:hover { opacity: 0.7; }
+
+    .cs-nav .nav-dir {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cs-nav .nav-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--warm);
+    }
+
+    .cs-nav .next { text-align: right; }
+
+    .cs-nav .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(248, 245, 240, 0.15);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      transition: all var(--transition);
+    }
+
+    .cs-nav .back-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .cs-layout { grid-template-columns: 1fr; }
+
+      .cs-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+      }
+
+      .result-highlights { grid-template-columns: 1fr; }
+      .type-grid { grid-template-columns: 1fr; }
+      .cs-image-grid { grid-template-columns: 1fr; }
+
+      .deck-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .cs-sidebar { grid-template-columns: 1fr; }
+      .cs-hero { aspect-ratio: 4 / 3; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Sunny <span>Jepsen</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Executive <span>Presentations</span></h1>
+      <p>High-stakes decks, process infographics, and reusable template systems — designed to communicate clearly under pressure.</p>
+    </div>
+
+    <div class="cs-hero">
+      <img src="../images/presentations/executive-review.jpg" alt="Q2 Executive Business Review deck — performance metrics, revenue growth, and strategic roadmap" />
+    </div>
+
+    <div class="cs-layout">
+
+      <div class="cs-content">
+
+        <!-- OVERVIEW -->
+        <div class="cs-section">
+          <h2>Overview</h2>
+          <h3>Design that makes complex information impossible to misread.</h3>
+          <p>
+            Presentation design is where design thinking meets high-stakes communication. An executive deck has seconds to establish credibility — the layout, the data visualization, the type hierarchy, the color system all have to work together to make the audience trust the information before they've read a single word.
+          </p>
+          <p>
+            The work in this case study spans four presentation types: an <strong>executive business review deck</strong>, a <strong>digital product launch blueprint</strong>, a <strong>process infographic redesign</strong>, and a <strong>reusable presentation design system</strong>. Each required a different approach to structure, visual hierarchy, and data communication — but all were built on the same principle: <strong>clarity first, style second.</strong>
+          </p>
+
+          <div class="type-grid">
+            <div class="type-card">
+              <div class="t-icon">◈</div>
+              <div class="t-title">Executive business review</div>
+              <div class="t-desc">Board-level financial and operational performance decks — KPIs, revenue growth, market share, operational efficiency, and strategic roadmaps presented for C-suite and investor audiences.</div>
+            </div>
+            <div class="type-card">
+              <div class="t-icon">◎</div>
+              <div class="t-title">Product launch decks</div>
+              <div class="t-desc">End-to-end launch strategy presentations — market analysis, target audience, product positioning, marketing channels, launch timeline, and KPI frameworks.</div>
+            </div>
+            <div class="type-card">
+              <div class="t-icon">⊞</div>
+              <div class="t-title">Process infographics</div>
+              <div class="t-desc">Complex multi-step processes simplified into clear visual diagrams — designed for distributor training, sales rep education, and customer-facing communications.</div>
+            </div>
+            <div class="type-card">
+              <div class="t-icon">Aa</div>
+              <div class="t-title">Template design systems</div>
+              <div class="t-desc">Reusable, brand-consistent presentation templates built for ongoing use — giving teams a professional starting point without starting from scratch every time.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DECK 1: EXECUTIVE REVIEW -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Deck 01</span></div>
+          <div class="deck-header">
+            <div>
+              <div class="dh-title">Q2 Executive Business Review</div>
+              <div class="dh-sub">Board-level · Financial + operational performance</div>
+            </div>
+            <span class="dh-badge">C-suite audience</span>
+          </div>
+
+          <p>
+            The Q2 Executive Business Review is a board-level performance deck covering financial results, operational efficiency, market analysis, and strategic priorities. The design challenge with executive decks is density — there's a lot of information, and it all has to be digestible in a single viewing without the audience losing the thread.
+          </p>
+          <p>
+            The solution here is a <strong>clean blue and white design system with strong typographic hierarchy</strong> — large section numbers, bold KPI callouts, circular data visualizations for performance metrics, and a consistent grid that lets each slide breathe without sacrificing content depth. The +23% revenue growth slide and the +99.7% operational uptime slide are designed to land their headline numbers in under two seconds.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/presentations/executive-review.jpg" alt="Q2 Executive Business Review — performance metrics, revenue growth, competitive analysis, and strategic roadmap slides" />
+          </div>
+          <p class="cs-image-caption">Q2 Executive Business Review — KPI overview, operational performance, revenue growth (+23% YoY), market and competitive analysis, and strategic implementation roadmap.</p>
+        </div>
+
+        <!-- DECK 2: PRODUCT LAUNCH -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Deck 02</span></div>
+          <div class="deck-header">
+            <div>
+              <div class="dh-title">Digital Product Launch Blueprint</div>
+              <div class="dh-sub">Launch strategy · Market analysis · Go-to-market</div>
+            </div>
+            <span class="dh-badge">Strategy deck</span>
+          </div>
+
+          <p>
+            The Digital Product Launch Blueprint is a complete go-to-market strategy deck — covering market analysis, target customer profile, product positioning, mobile marketing channels, mobile shopping trends, launch timeline, launch roadmap, and KPI framework. This is the kind of deck that gets presented to leadership before a product ships, and to distributor sales teams at launch events.
+          </p>
+          <p>
+            The design uses a <strong>dark purple and gradient color system</strong> — intentionally different from a corporate blue palette to signal innovation and digital-first thinking. The layout is modular: each slide has a clear single headline, supporting content in structured columns, and consistent use of product mockups and photography to ground the strategy in something tangible.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/presentations/product-launch.jpg" alt="Digital Product Launch Blueprint — agenda, product positioning, target customer profile, mobile marketing channels, launch timeline, and KPIs" />
+          </div>
+          <p class="cs-image-caption">Digital Product Launch Blueprint — agenda, product positioning (value proposition, competitive advantage, USPs), target customer profile, mobile marketing channels, launch timeline, and KPI framework.</p>
+        </div>
+
+        <!-- DECK 3: PROCESS INFOGRAPHIC -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Deck 03</span></div>
+          <div class="deck-header">
+            <div>
+              <div class="dh-title">UEi Online Recertification Process</div>
+              <div class="dh-sub">Process infographic · Two versions · Distributor training</div>
+            </div>
+            <span class="dh-badge">Before → After redesign</span>
+          </div>
+
+          <p>
+            The UEi Online Recertification Process infographic had to explain a complex multi-step service workflow — from submitting a service request through shipping, recertification, and return — clearly enough for distributors and end users to follow without additional explanation. I designed two versions, each taking a different visual approach to the same process.
+          </p>
+          <p>
+            <strong>Version 1</strong> uses a linear layout with the circular process diagram as a supporting element — spreading the steps across the page for maximum legibility. <strong>Version 2</strong> integrates the circular diagram as the dominant visual, wrapping all process steps around it for a more compact, visually bold result. Both versions use the UEi brand system and the same icon library — the difference is purely structural, showing how the same content can be organized for different contexts and audiences.
+          </p>
+
+          <div class="cs-image-grid">
+            <div class="cs-image">
+              <img src="../images/presentations/process-infographic-1.jpeg" alt="UEi Online Recertification Process — Version 1, linear layout" />
+            </div>
+            <div class="cs-image">
+              <img src="../images/presentations/process-infographic-2.jpeg" alt="UEi Online Recertification Process — Version 2, circular dominant layout" />
+            </div>
+          </div>
+          <p class="cs-image-caption">Online Recertification Process — Version 1 (left): linear layout with supporting circular diagram. Version 2 (right): circular diagram as dominant visual with steps wrapped around it.</p>
+        </div>
+
+        <!-- DECK 4: DESIGN SYSTEM -->
+        <div class="cs-section">
+          <div class="channel-divider"><span>Deck 04</span></div>
+          <div class="deck-header">
+            <div>
+              <div class="dh-title">Presentation Design System</div>
+              <div class="dh-sub">Reusable template · Portfolio piece · Navy + gold design system</div>
+            </div>
+            <span class="dh-badge">Template system</span>
+          </div>
+
+          <p>
+            The Presentation Design System is a reusable slide template built around a <strong>dark navy, gold, and warm white color system</strong> — the same visual language as this portfolio. It demonstrates how a well-designed template system works: a consistent split-layout structure, a disciplined type hierarchy, and a data visualization approach that adapts cleanly to different content types.
+          </p>
+          <p>
+            Templates like this solve a real organizational problem. When teams build decks from scratch every time, quality is inconsistent and time is wasted on design decisions that should already be made. A well-built template system gives everyone a professional starting point — so the team spends time on the content, not the layout.
+          </p>
+
+          <div class="cs-image">
+            <img src="../images/presentations/design-system.jpg" alt="Presentation design system — The Future of AI-Powered Computing keynote template in navy and gold" />
+          </div>
+          <p class="cs-image-caption">Presentation Design System — keynote template in navy, gold, and warm white. Split-layout structure with data visualization placeholder. Built for reuse across presentation types.</p>
+        </div>
+
+        <!-- THE RESULT -->
+        <div class="cs-section">
+          <h2>The Result</h2>
+          <h3>Presentations that work before the first word is spoken.</h3>
+          <p>
+            Good presentation design does something most people don't notice when it's working — it removes friction between the audience and the information. When a slide is well-designed, the viewer's eye goes exactly where it needs to go, the hierarchy is obvious, and the data lands without explanation.
+          </p>
+          <p>
+            The UEi recertification process infographic was adopted by the distributor sales team for training and customer communications. The presentation templates built for portfolio use demonstrate a design system approach that translates directly to any brand's communication needs — <strong>the same thinking that built UEi's brand standards applies equally to a deck, a diagram, or a keynote.</strong>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="cs-sidebar">
+
+        <div class="sidebar-block">
+          <h4>Presentation types</h4>
+          <ul>
+            <li>Executive business review</li>
+            <li>Product launch strategy</li>
+            <li>Process infographics</li>
+            <li>Template design systems</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>My role</h4>
+          <ul>
+            <li>Content strategy</li>
+            <li>Narrative structure</li>
+            <li>Slide design</li>
+            <li>Data visualization</li>
+            <li>Template systems</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Disciplines</h4>
+          <ul>
+            <li>Presentation Design</li>
+            <li>Data Visualization</li>
+            <li>Infographic Design</li>
+            <li>Information Design</li>
+            <li>Template Systems</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Tools</h4>
+          <ul>
+            <li>Adobe Illustrator</li>
+            <li>Adobe InDesign</li>
+            <li>Adobe Photoshop</li>
+            <li>PowerPoint</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h4>Audience types</h4>
+          <div class="stat-stack">
+            <div class="stat-item">
+              <span class="stat-number">C-suite</span>
+              <span class="stat-label">Board and executive review decks</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">Sales</span>
+              <span class="stat-label">Distributor training and launch decks</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">External</span>
+              <span class="stat-label">Customer-facing process communications</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CASE STUDY NAV -->
+    <div class="cs-nav">
+      <a href="digital-marketing.html">
+        <span class="nav-dir">← Previous project</span>
+        <span class="nav-title">Digital Marketing</span>
+      </a>
+      <a href="../index.html" class="back-btn">All work</a>
+      <a href="illustration.html" class="next">
+        <span class="nav-dir">Next project →</span>
+        <span class="nav-title">Technical Illustration</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Sunny Jepsen</span> · Creative Lead · Hillsboro, Oregon</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
